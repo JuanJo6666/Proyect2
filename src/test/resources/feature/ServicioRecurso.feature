@@ -13,10 +13,6 @@ Feature: Pruebas al servicio resources
     Then validar informacion de la recurso
       | nombre       | año  | color   | pantone |
       | fuchsia rose | 2001 | #C74375 | 10-2031 |
-      | nombre       | año  | color   | pantone |
-      | fuchsia rose | 2001 | #C74375 | 10-2031 |
-      | nombre       | año  | color   | pantone |
-      | fuchsia rose | 2001 | #C74375 | 10-2031 |
 
   Scenario: Recurso no encontrado
     Given listar recurso con id "20"

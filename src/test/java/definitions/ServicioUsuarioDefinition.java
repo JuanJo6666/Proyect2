@@ -67,4 +67,40 @@ public class ServicioUsuarioDefinition {
         }
 
     }
+
+    @Given("que no exite usuario registrado")
+    public void queNoExiteUsuarioRegistrado() {
+    }
+
+    @When("registrar datos del usuario")
+    public void registrarDatosDelUsuario(DataTable dt) {
+        List<Map<String, String>> data = dt.asMaps(String.class,String.class);
+        for(int i=0;i < data.size(); i++){
+            user.createUser(data.get(i).get("nombre"),data.get(i).get("puesto"));
+            validarCodigoDeRespuesta(data.get(i).get("codigo"));
+            mostrarElListadoDeUsuarios();
+        }
+    }
+
+    @Then("mostrar los datos del registro")
+    public void mostrarLosDatosDelRegistro() {
+        mostrarElListadoDeUsuarios();
+
+    }
+
+    @Given("que el usuario este registrado")
+    public void queElUsuarioEsteRegistrado() {
+        
+    }
+
+    @When("actualizar datos del usuario")
+    public void actualizarDatosDelUsuario(DataTable dt) {
+        List<Map<String, String>> data = dt.asMaps(String.class,String.class);
+        for(int i=0;i < data.size(); i++){
+            user.updateUserput(data.get(i).get("id"),data.get(i).get("nombre"),data.get(i).get("puesto"));
+            validarCodigoDeRespuesta(data.get(i).get("codigo"));
+            mostrarElListadoDeUsuarios();
+
+    }
+}
 }
